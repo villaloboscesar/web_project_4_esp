@@ -1,0 +1,18 @@
+*{
+    
+    font-family: 'Inter', Arial, sans-serif;
+  }
+  .page {
+    
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    /* we don't know how to make mobile versions of websites yet, */
+    /* so here we've set a minimum page width */
+    color: #fff;
+    background-color: #000;
+    margin: auto;
+    /* here we've set a maximum page width */
+    /* this ensures that all content is centered on screens wider than 1600px */
+    
+  }

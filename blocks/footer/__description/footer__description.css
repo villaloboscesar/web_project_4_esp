@@ -1,0 +1,21 @@
+.footer__description{
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #545454;
+    text-align: start;
+    margin-top: 68px;
+    margin-bottom: 60px;
+    text-align: start;
+}
+
+@media screen and (max-width: 581px){
+ 
+    .footer__description{
+        font-size: 14px;
+        line-height: 17px;
+        margin-top: 50px;
+        margin-bottom: 36px;
+    }
+}

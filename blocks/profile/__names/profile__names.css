@@ -1,0 +1,16 @@
+.profile__names{
+    display: grid;
+    grid-template-areas: "name edit"
+                          "about .";
+                          align-items: center;
+                          justify-content: center;
+                          margin-left: -100px;                                     
+  } 
+
+  @media screen and (max-width: 879px){
+   
+    .profile__names{
+        margin: auto;
+        text-align: center;
+    }
+ }
