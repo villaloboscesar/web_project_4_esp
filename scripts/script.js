@@ -1,10 +1,10 @@
-let editprofile = document.querySelector(".profile__button-edit");
-let openform = document.querySelector(".popup_opened");
-let closeform = document.querySelector(".popup__close")
-let captureName = document.querySelector(".profile__name");
-let captureAbout = document.querySelector(".profile__about");
-let setPopupName = document.querySelector(".popup__name");
-let setPopupAbout= document.querySelector(".popup__about-me");
+const editprofile = document.querySelector(".profile__button-edit");
+const openform = document.querySelector(".popup_opened");
+const closeform = document.querySelector(".popup__close")
+const captureName = document.querySelector(".profile__name");
+const captureAbout = document.querySelector(".profile__about");
+const setPopupName = document.querySelector(".popup__name");
+const setPopupAbout= document.querySelector(".popup__about-me");
 
 
 function openPopup (){
@@ -22,16 +22,17 @@ setPopupName.setAttribute("value" , captureName.textContent);
 setPopupAbout.setAttribute("value" , captureAbout.textContent);
 
 
-let form = document.querySelector(".popup");
+const form = document.querySelector(".popup");
 
 
 function handleProfileFormSubmit(evt) {
-
+    
     evt.preventDefault();
-    let nameinput = document.querySelector(".popup__name").value;
-    let aboutinput = document.querySelector(".popup__about-me").value;
+    const nameinput = document.querySelector(".popup__name").value;
+    const aboutinput = document.querySelector(".popup__about-me").value;
     captureName.textContent = nameinput;
     captureAbout.textContent = aboutinput;
+    openform.setAttribute("style", "display: none");
 
 }
 
