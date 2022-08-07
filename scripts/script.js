@@ -28,10 +28,10 @@ const form = document.querySelector(".popup");
 function handleProfileFormSubmit(evt) {
     
     evt.preventDefault();
-    const nameinput = document.querySelector(".popup__name").value;
-    const aboutinput = document.querySelector(".popup__about-me").value;
-    captureName.textContent = nameinput;
-    captureAbout.textContent = aboutinput;
+    const setPopupName = document.querySelector(".popup__name").value;
+    const setPopupAbout = document.querySelector(".popup__about-me").value;
+    captureName.textContent = setPopupName;
+    captureAbout.textContent = setPopupAbout;
     openform.setAttribute("style", "display: none");
 
 }
