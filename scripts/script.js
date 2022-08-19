@@ -118,12 +118,3 @@ const initialCards = [
     }
     formAddNewCard.addEventListener('submit', handleNewcardFormSubmit); 
 
-
-    // function addSong(artistValue, titleValue) {
-    //     const songTemplate = document.querySelector("#song-template").content;
-    //     const songElement = songTemplate.querySelector('.song').cloneNode(true);
-      
-    //     songElement.querySelector(".song__artist").textContent = artistValue;
-    //     songElement.querySelector(".song__title").textContent = songValue;
-    //      songsContainer.append(songElement);
-    //   }
