@@ -110,9 +110,10 @@ const initialCards = [
         cloneNewCard.querySelector(".elements__title").textContent = newTitleCard;
         //Capturo el valor del URL ingresado por el usuario en el formulario y lo guardo en la nueva tarjeta
         const newURLImage = document.querySelector(".newitem__url").value;
-        cloneNewCard.querySelector(".elements__pic").value = newURLImage.src;
+        //Agrego el valor capturado y lo coloco como SRC a la nueva imagen de la card
+        cloneNewCard.querySelector(".elements__pic").src = newURLImage;
         //Agrego la nueva tarjeta al DOM
-        addelements.append(cloneNewCard);
+        addelements.prepend(cloneNewCard);
         //Cierro la ventana
         openformNewitem.setAttribute("style", "visibility: none; opacity: 0");
     }
