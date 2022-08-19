@@ -94,9 +94,12 @@ const initialCards = [
     addsrc.src = item.link;
     const addtitle = clonetemplate.querySelector(".elements__title");
     addtitle.textContent = item.name;
+    clonetemplate.querySelector(".elements__like").addEventListener("click", function (event) {
+        event.target.classList.toggle("elements__like_active");
+          });
     addelements.append(clonetemplate); 
     })
-
+//Funcion agregar nueva tarjeta
     function handleNewcardFormSubmit(evt) { 
         evt.preventDefault();
         //Selecciono todo el contenido dentro del template
@@ -112,10 +115,21 @@ const initialCards = [
         const newURLImage = document.querySelector(".newitem__url").value;
         //Agrego el valor capturado y lo coloco como SRC a la nueva imagen de la card
         cloneNewCard.querySelector(".elements__pic").src = newURLImage;
+
+        cloneNewCard.querySelector(".elements__like").addEventListener("click", function (event) {
+            event.target.classList.toggle("elements__like_active");
+              });
         //Agrego la nueva tarjeta al DOM
         addelements.prepend(cloneNewCard);
         //Cierro la ventana
         openformNewitem.setAttribute("style", "visibility: none; opacity: 0");
     }
     formAddNewCard.addEventListener('submit', handleNewcardFormSubmit); 
+
+//Funcion Boton Like
+
+
+
+    
+
 
