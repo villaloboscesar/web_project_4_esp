@@ -10,6 +10,8 @@ const openformNewitem = document.querySelector(".newitem_opened");
 const newPlace = document.querySelector(".profile__addbutton");
 const closePlace = document.querySelector(".newitem__close");
 const form = document.querySelector(".popup");
+const formAddNewCard = document.querySelector(".newitem");
+const cardtitle = document.querySelector(".elements__title");
 
 //Funcion que abre popup para editar perfil
 function openPopup (){
@@ -55,7 +57,7 @@ form.addEventListener('submit', handleProfileFormSubmit);
 
 
 
-//For Each que itera sobre array (initialcards) clonando 6 templates
+//For Each que itera sobre array (initialcards) clonando 6 templates desde #template__cards
 //agrega los value de los objetos del array (name y link) y se los cada imagen y titulo de tarjeta
 const initialCards = [
     {
@@ -83,7 +85,7 @@ const initialCards = [
         link: "https://code.s3.yandex.net/web-code/lago.jpg"
     }
     ]; 
-    
+
     initialCards.forEach(item=>{
     const templateContent = document.querySelector("#template__cards").content; 
     const addelements = document.querySelector(".elements");
@@ -95,3 +97,33 @@ const initialCards = [
     addelements.append(clonetemplate); 
     })
 
+    function handleNewcardFormSubmit(evt) { 
+        evt.preventDefault();
+        //Selecciono todo el contenido dentro del template
+        const templateContent = document.querySelector("#template__cards").content;
+        //Clono todo el template con su contenido 
+        const cloneNewCard = templateContent.querySelector('.elements__container').cloneNode(true); 
+        //Selecciono en el DOM cual elemento HTML destino a colocar el clone
+        const addelements = document.querySelector(".elements"); 
+        //Capturo el valor del titulo ingresado por el usuario en el formulario y lo guardo en el titulo de la nueva tarjeta
+        const newTitleCard = document.querySelector(".newitem__name").value;
+        cloneNewCard.querySelector(".elements__title").textContent = newTitleCard;
+        //Capturo el valor del URL ingresado por el usuario en el formulario y lo guardo en la nueva tarjeta
+        const newURLImage = document.querySelector(".newitem__url").value;
+        cloneNewCard.querySelector(".elements__pic").value = newURLImage.src;
+        //Agrego la nueva tarjeta al DOM
+        addelements.append(cloneNewCard);
+        //Cierro la ventana
+        openformNewitem.setAttribute("style", "visibility: none; opacity: 0");
+    }
+    formAddNewCard.addEventListener('submit', handleNewcardFormSubmit); 
+
+
+    // function addSong(artistValue, titleValue) {
+    //     const songTemplate = document.querySelector("#song-template").content;
+    //     const songElement = songTemplate.querySelector('.song').cloneNode(true);
+      
+    //     songElement.querySelector(".song__artist").textContent = artistValue;
+    //     songElement.querySelector(".song__title").textContent = songValue;
+    //      songsContainer.append(songElement);
+    //   }
