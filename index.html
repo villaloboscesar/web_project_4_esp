@@ -26,10 +26,26 @@
                 </form>
             </section>
 
+            <section  class="newitem newitem_opened">
+                <form  class="newitem__container">
+                    <button class="newitem__close"><img src="./images/CloseIcon.svg" alt="icono cerrar" class="newitem__close-icon"></button>
+                    <h3 class="newitem__title">Nuevo Lugar</h3>
+                    <fieldset class="newitem__form">
+                        <input type="text" name="name"  placeholder="Titulo" class="newitem__name">
+                        <input type="text" name="about" placeholder="Enlace de la Imagen" class="newitem__url">
+                        <button  type="submit"s class="newitem__button">Crear</button>
+                    </fieldset>    
+                </form>
+            </section>
+
+           
+
             <header class="header">
                 <img src="./images/Header.svg" alt="imagen de header" class="header__image">
                <hr class="header__line">
             </header>
+
+         
 
           
 
@@ -46,8 +62,14 @@
             </section>
 
             <section class="elements">
-                <div class="elements__container">
+
+            </section>
+
+         
+            <!-- <section class="elements">
+               <div class="elements__container">
                     <img src="./images/valle_yosemite.jpg" alt="valle yosemite" class="elements__pic">
+                    <img src="./images/Trash.svg" alt="icono borrar" class="profile__trash">
                     <div class="elements__titles">    
                         <h3 class="elements__title">Valle de Yosemite</h3>
                         <img src="./images/corazon.svg" alt="imagen like" class="elements__like">
@@ -56,6 +78,7 @@
                 
                 <div class="elements__container">
                     <img src="./images/Lago_Louise.jpg" alt="Lago louise" class="elements__pic">
+                    <img src="./images/Trash.svg" alt="icono borrar" class="profile__trash">
                     <div class="elements__titles">    
                         <h3 class="elements__title">Lago Louise</h3>
                         <img src="./images/corazon.svg" alt="imagen like" class="elements__like">
@@ -64,6 +87,7 @@
 
                 <div class="elements__container">
                     <img src="./images/montanas_calvas.jpg" alt="montanas calvas" class="elements__pic">
+                    <img src="./images/Trash.svg" alt="icono borrar" class="profile__trash">
                     <div class="elements__titles">    
                         <h3 class="elements__title">Montañas Calvas</h3>
                         <img src="./images/corazon.svg" alt="imagen like" class="elements__like">
@@ -72,6 +96,7 @@
                 
                 <div class="elements__container">
                     <img src="./images/latemar.jpg" alt="Latemar" class="elements__pic">
+                    <img src="./images/Trash.svg" alt="icono borrar" class="profile__trash">
                     <div class="elements__titles">    
                         <h3 class="elements__title">Latemar</h3>
                         <img src="./images/corazon.svg" alt="Imagen like" class="elements__like">
@@ -80,6 +105,7 @@
 
                 <div class="elements__container">
                     <img src="./images/Vanoise_Nationa....jpg" alt="Vanoise" class="elements__pic">
+                    <img src="./images/Trash.svg" alt="icono borrar" class="profile__trash">
                     <div class="elements__titles">    
                         <h3 class="elements__title">vanoise national park</h3>
                         <img src="./images/corazon.svg" alt="Imagen like" class="elements__like">
@@ -88,15 +114,29 @@
                 
                 <div class="elements__container">
                     <img src="./images/lago_di_bares.jpg" alt="Lago di bares" class="elements__pic">
+                    <img src="./images/Trash.svg" alt="icono borrar" class="profile__trash">
                     <div class="elements__titles">    
                         <h3 class="elements__title">Lago di Braies</h3>
                         <img src="./images/corazon.svg" alt="Imagen like" class="elements__like">
                     </div>
                 </div>
-            </section>
+            </section> -->
 
-            <footer class="footer"><p class="footer__description"> © 2021 Alrededor de los EEUU</p></footer>
+            <footer class="footer"><p class="footer__description"> © 2022 Alrededor de los EEUU</p></footer>
         </div>
+    
+        <template id="template__cards">   
+            <div class="elements__container">
+                <img  class="elements__pic">
+                <img src="./images/Trash.svg" alt="icono borrar" class="profile__trash">
+                <div class="elements__titles">    
+                    <h3 class="elements__title"></h3>
+                    <img src="./images/corazon.svg" alt="Imagen like" class="elements__like">
+                </div>
+            </div>
+        </template>
+      
+    
     <script src="./scripts/script.js"></script>
     </body>
 </html>

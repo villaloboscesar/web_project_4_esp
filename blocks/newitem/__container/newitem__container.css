@@ -1,0 +1,18 @@
+.newitem__container{
+    margin: auto;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 430px;
+    height: 330px;
+    background-color: white;
+    border-radius: 10px ; 
+}
+
+@media screen and (max-width: 581px){
+ 
+    .newitem__container{
+        width: 282px;
+        height: 322px;
+    }
+}

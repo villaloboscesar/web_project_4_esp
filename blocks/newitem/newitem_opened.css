@@ -1,4 +1,4 @@
-.popup_opened{
+.newitem_opened{
     display: flex;
     visibility: hidden;
     opacity: 0;

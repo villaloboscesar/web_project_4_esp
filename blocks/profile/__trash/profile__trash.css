@@ -1,0 +1,6 @@
+.profile__trash{
+    position: absolute;
+    margin-left: -30px;
+    margin-top: 15px;
+    cursor: pointer;
+}

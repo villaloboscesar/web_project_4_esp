@@ -1,4 +1,4 @@
-.popup__close{
+.newitem__close{
     position: absolute;
     width: 40px;
     height: 40px;
@@ -8,14 +8,4 @@
     cursor: pointer;
     outline: none;
     border: none;
-}
-
-@media screen and (max-width: 581px){
- 
-    .popup__close{
-        width: 20px;
-        height: 20px;
-        top: -25px;
-        right: -10px ;
-    }
 }

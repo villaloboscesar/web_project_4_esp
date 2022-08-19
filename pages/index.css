@@ -8,6 +8,7 @@
 @import url(../blocks/popup/__button/popup__button.css);
 @import url(../blocks/popup/__button:hover/popup__button:hover.css);
 @import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/popup/__close-icon/popup__close-icon.css);
 @import url(../blocks/popup/__close-icon:hover/close__icon:hover.css);
 @import url(../blocks/popup/__close:hover/popup__close:hover.css);
 @import url(../blocks/popup/__container/popup__container.css);
@@ -33,4 +34,16 @@
 @import url(../blocks/elements/__titles/elements__titles.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__description/footer__description.css);
+@import url(../blocks/profile/__trash/profile__trash.css);
+@import url(../blocks/newitem/newitem.css);
+@import url(../blocks/newitem/newitem_opened.css);
+@import url(../blocks/newitem/__container/newitem__container.css);
+@import url(../blocks/newitem/__close/newitem__close.css);
+@import url(../blocks/newitem/__close-icon:hover/newitem__close-icon:hover.css);
+@import url(../blocks/newitem/__title/newitem__title.css);
+@import url(../blocks/newitem/__form/newitem__form.css);
+@import url(../blocks/newitem/__name/newitem__name.css);
+@import url(../blocks/newitem/__url/newitem__url.css);
+@import url(../blocks/newitem/__button/newitem__button.css);
+@import url(../blocks/newitem/__button:hover.css/newitem__button.css);
 
