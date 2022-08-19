@@ -53,19 +53,10 @@ function handleProfileFormSubmit(evt) {
 }
 form.addEventListener('submit', handleProfileFormSubmit); 
 
+
+
 //For Each que itera sobre array (initialcards) clonando 6 templates
 //agrega los value de los objetos del array (name y link) y se los cada imagen y titulo de tarjeta
-    initialCards.forEach(item=>{
-    const templateContent = document.querySelector("#template__cards").content; 
-    const addelements = document.querySelector(".elements");
-    const clonetemplate = templateContent.querySelector('.elements__container').cloneNode(true); 
-    const addsrc = clonetemplate.querySelector(".elements__pic");
-    addsrc.src = item.link;
-    const addtitle = clonetemplate.querySelector(".elements__title");
-    addtitle.textContent = item.name;
-    addelements.append(clonetemplate); 
-    })
-
 const initialCards = [
     {
         name: "Valle de Yosemite",
@@ -92,3 +83,15 @@ const initialCards = [
         link: "https://code.s3.yandex.net/web-code/lago.jpg"
     }
     ]; 
+    
+    initialCards.forEach(item=>{
+    const templateContent = document.querySelector("#template__cards").content; 
+    const addelements = document.querySelector(".elements");
+    const clonetemplate = templateContent.querySelector('.elements__container').cloneNode(true); 
+    const addsrc = clonetemplate.querySelector(".elements__pic");
+    addsrc.src = item.link;
+    const addtitle = clonetemplate.querySelector(".elements__title");
+    addtitle.textContent = item.name;
+    addelements.append(clonetemplate); 
+    })
+
