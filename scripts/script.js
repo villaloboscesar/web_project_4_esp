@@ -111,16 +111,8 @@ const initialCards = [
         // //Funcion mostrar imagen card en popup     
         clonetemplate.querySelector(".elements__pic").addEventListener("click", function (event){
         
-       
          });
 
-        //  document.getElementById('insert-btn').onclick = function () {
-        //     const val = document.getElementById('imageName').value;
-        //     const src = 'https://google.com/images/' + val + '.png';
-        //     let imgTag = document.createElement('img');
-        //     imgTag.src = src;
-        //     document.body.appendChild(imgTag);
-        //   }
         addelements.append(clonetemplate);
     });
  
