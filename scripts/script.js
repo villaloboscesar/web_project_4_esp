@@ -87,18 +87,42 @@ const initialCards = [
     ]; 
 
     initialCards.forEach(item=>{
+    //Seleccion del template con todo su contenido interno
     const templateContent = document.querySelector("#template__cards").content; 
+    //Seleccion de elemento donde se copiara el templeta clonado
     const addelements = document.querySelector(".elements");
+    //Clonado de template
     const clonetemplate = templateContent.querySelector('.elements__container').cloneNode(true); 
+    //Seleccion y agregado de url desde objeto initialcards
     const addsrc = clonetemplate.querySelector(".elements__pic");
     addsrc.src = item.link;
+    //Seleccion y agregado de titulo de la card desde objeto initialcards
     const addtitle = clonetemplate.querySelector(".elements__title");
     addtitle.textContent = item.name;
+    
+    //Funcion Boton Like
     clonetemplate.querySelector(".elements__like").addEventListener("click", function (event) {
         event.target.classList.toggle("elements__like_active");
-          });
-    addelements.append(clonetemplate); 
-    })
+    });
+    //Funcion que borra cualquier card inicial
+    clonetemplate.querySelector(".profile__trash").addEventListener("click", function (event){
+        event.target.closest(".elements__container").remove();
+        });
+    addelements.append(clonetemplate);
+    });
+   
+    
+    // resetButton.addEventListener("click", function () {
+    //     const songs = document.querySelectorAll(".song")
+      
+    //     songs.forEach((item)=>{
+    //            item.remove();       
+    //                   });
+    //      renderNoSongs();
+    //   });
+
+
+
 //Funcion agregar nueva tarjeta
     function handleNewcardFormSubmit(evt) { 
         evt.preventDefault();
@@ -115,21 +139,18 @@ const initialCards = [
         const newURLImage = document.querySelector(".newitem__url").value;
         //Agrego el valor capturado y lo coloco como SRC a la nueva imagen de la card
         cloneNewCard.querySelector(".elements__pic").src = newURLImage;
-
+        // Funcion Boton Like
         cloneNewCard.querySelector(".elements__like").addEventListener("click", function (event) {
             event.target.classList.toggle("elements__like_active");
               });
+        //Funcion que borra cualquier card nueva que se agregue
+        cloneNewCard.querySelector(".profile__trash").addEventListener("click", function (event){
+        event.target.closest(".elements__container").remove();
+        });
         //Agrego la nueva tarjeta al DOM
         addelements.prepend(cloneNewCard);
         //Cierro la ventana
         openformNewitem.setAttribute("style", "visibility: none; opacity: 0");
     }
     formAddNewCard.addEventListener('submit', handleNewcardFormSubmit); 
-
-//Funcion Boton Like
-
-
-
-    
-
 
