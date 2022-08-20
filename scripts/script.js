@@ -87,41 +87,43 @@ const initialCards = [
     ]; 
 
     initialCards.forEach(item=>{
-    //Seleccion del template con todo su contenido interno
-    const templateContent = document.querySelector("#template__cards").content; 
-    //Seleccion de elemento donde se copiara el templeta clonado
-    const addelements = document.querySelector(".elements");
-    //Clonado de template
-    const clonetemplate = templateContent.querySelector('.elements__container').cloneNode(true); 
-    //Seleccion y agregado de url desde objeto initialcards
-    const addsrc = clonetemplate.querySelector(".elements__pic");
-    addsrc.src = item.link;
-    //Seleccion y agregado de titulo de la card desde objeto initialcards
-    const addtitle = clonetemplate.querySelector(".elements__title");
-    addtitle.textContent = item.name;
-    
-    //Funcion Boton Like
-    clonetemplate.querySelector(".elements__like").addEventListener("click", function (event) {
-        event.target.classList.toggle("elements__like_active");
-    });
-    //Funcion que borra cualquier card inicial
-    clonetemplate.querySelector(".profile__trash").addEventListener("click", function (event){
-        event.target.closest(".elements__container").remove();
+        //Seleccion del template con todo su contenido interno
+        const templateContent = document.querySelector("#template__cards").content; 
+        //Seleccion de elemento donde se copiara el templeta clonado
+        const addelements = document.querySelector(".elements");
+        //Clonado de template
+        const clonetemplate = templateContent.querySelector('.elements__container').cloneNode(true); 
+        //Seleccion y agregado de url desde objeto initialcards
+        const addsrc = clonetemplate.querySelector(".elements__pic");
+        addsrc.src = item.link;
+        //Seleccion y agregado de titulo de la card desde objeto initialcards
+        const addtitle = clonetemplate.querySelector(".elements__title");
+        addtitle.textContent = item.name;
+        
+        //Funcion Boton Like
+        clonetemplate.querySelector(".elements__like").addEventListener("click", function (event) {
+            event.target.classList.toggle("elements__like_active");
         });
-    addelements.append(clonetemplate);
+        //Funcion que borra cualquier card inicial
+        clonetemplate.querySelector(".profile__trash").addEventListener("click", function (event){
+            event.target.closest(".elements__container").remove();
+            });
+        // //Funcion mostrar imagen card en popup     
+        clonetemplate.querySelector(".elements__pic").addEventListener("click", function (event){
+        
+       
+         });
+
+        //  document.getElementById('insert-btn').onclick = function () {
+        //     const val = document.getElementById('imageName').value;
+        //     const src = 'https://google.com/images/' + val + '.png';
+        //     let imgTag = document.createElement('img');
+        //     imgTag.src = src;
+        //     document.body.appendChild(imgTag);
+        //   }
+        addelements.append(clonetemplate);
     });
-   
-    
-    // resetButton.addEventListener("click", function () {
-    //     const songs = document.querySelectorAll(".song")
-      
-    //     songs.forEach((item)=>{
-    //            item.remove();       
-    //                   });
-    //      renderNoSongs();
-    //   });
-
-
+ 
 
 //Funcion agregar nueva tarjeta
     function handleNewcardFormSubmit(evt) { 
@@ -153,4 +155,7 @@ const initialCards = [
         openformNewitem.setAttribute("style", "visibility: none; opacity: 0");
     }
     formAddNewCard.addEventListener('submit', handleNewcardFormSubmit); 
+
+
+
 
