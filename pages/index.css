@@ -16,6 +16,12 @@
 @import url(../blocks/popup/__name/popup__name.css);
 @import url(../blocks/popup/__sobre-mi/popup__about-me.css);
 @import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/clickimg/clickimg.css);
+@import url(../blocks/clickimg/__container/clickimg__container.css);
+@import url(../blocks/clickimg/clickimg_opened.css);
+@import url(../blocks/clickimg/__close/clickimg__close.css);
+@import url(../blocks/clickimg/__img/clickimg__img.css);
+@import url(../blocks/clickimg/__title/clickimg__title.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__about/profile__about.css);
 @import url(../blocks/profile/__addbutton/profile__addbutton.css);
