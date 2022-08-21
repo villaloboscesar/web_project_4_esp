@@ -12,7 +12,9 @@ const closePlace = document.querySelector(".newitem__close");
 const form = document.querySelector(".popup");
 const formAddNewCard = document.querySelector(".newitem");
 const cardtitle = document.querySelector(".elements__title");
-
+const clickImgTitle = document.querySelector(".clickimg__title");
+const imagePopup = document.querySelector(".clickimg");
+const buttonClosePopup = document.querySelector(".clickimg__close");
 //Funcion que abre popup para editar perfil
 function openPopup (){
    openform.style.visibility= "visible";
@@ -43,6 +45,14 @@ function closenewplace (event){
     openformNewitem.setAttribute("style", "visibility: none; opacity: 0");
 }
 closePlace.addEventListener("click", closenewplace);
+
+  //Funcion que cierra ventana img popup
+
+  function ClosePopupImgButton (event){
+    event.preventDefault();
+    imagePopup.setAttribute("style", "display: none");
+}
+buttonClosePopup.addEventListener("click", ClosePopupImgButton);
 
 //Funcion que captura datos de formulario perfil y los almacena luego de presionar boton guardar
 function handleProfileFormSubmit(evt) { 
@@ -109,9 +119,14 @@ const initialCards = [
             event.target.closest(".elements__container").remove();
             });
         // //Funcion mostrar imagen card en popup     
-        clonetemplate.querySelector(".elements__pic").addEventListener("click", function (event){
-        
-         });
+        clonetemplate.querySelector(".elements__pic").addEventListener("click", event =>{
+            const srcimage = document.querySelector(".clickimg__img");
+            srcimage.src = event.target.src
+            event.target = imagePopup.style.display= "flex";
+            clickImgTitle.textContent = event.target.closest("div").querySelector(".elements__title").textContent;
+           
+     
+        });
 
         addelements.append(clonetemplate);
     });
@@ -141,6 +156,16 @@ const initialCards = [
         cloneNewCard.querySelector(".profile__trash").addEventListener("click", function (event){
         event.target.closest(".elements__container").remove();
         });
+        
+        //Funcion que crear ventana emergente al hacer click a la imagen de una nueva tarjeta
+        cloneNewCard.querySelector(".elements__pic").addEventListener("click", event =>{
+            const srcimage = document.querySelector(".clickimg__img");
+            srcimage.src = event.target.src
+            event.target = imagePopup.style.display= "flex";
+            clickImgTitle.textContent = event.target.closest("div").querySelector(".elements__title").textContent;
+        });
+        
+
         //Agrego la nueva tarjeta al DOM
         addelements.prepend(cloneNewCard);
         //Cierro la ventana
@@ -149,5 +174,4 @@ const initialCards = [
     formAddNewCard.addEventListener('submit', handleNewcardFormSubmit); 
 
 
-
-
+ 

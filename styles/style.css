@@ -1,6 +1,6 @@
 .clickimg{
    
-    display: flex;  
+    display: none;  
     position: fixed;
     width: 100%;
     height: 100%;
@@ -21,7 +21,7 @@
 }
 
 .clickimg_opened {
-     
+     display: flex;
 }
 
 .clickimg__close{
