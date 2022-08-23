@@ -19,6 +19,7 @@ const buttonClosePopup = document.querySelector(".clickimg__close");
 function openPopup (){
    openform.style.visibility= "visible";
    openform.style.opacity= "1";
+   openform.style.display= "flex"
 }
 editprofile.addEventListener("click", openPopup);
 

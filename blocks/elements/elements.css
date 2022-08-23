@@ -5,11 +5,13 @@
     gap: 20px 17px;
     max-width: 880px;
     margin: auto;
+    margin-top: 36px;
 }
 
 @media screen and (max-width: 320px){
 
     .elements{
         margin: 0 19px 0 19px;
+        margin-top: 36px;
     }
 }
