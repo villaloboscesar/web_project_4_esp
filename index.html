@@ -19,25 +19,29 @@
             </header>
             
             <section  class="popup popup_opened">
-                <form  class="popup__container">
-                    <button class="popup__close"><img src="./images/CloseIcon.svg" alt="icono cerrar" class="popup__close-icon"></button>
-                    <h3 class="popup__title">Edit Profile</h3>
-                    <fieldset class="popup__form">
-                        <input type="text" name="name"  placeholder="Nombre" class="popup__name">
-                        <input type="text" name="about" placeholder="Sobre mi" class="popup__about-me">
-                        <button  type="submit" class="popup__button">Guardar</button>
-                    </fieldset>    
-                </form>
+                    <form name="form" class="popup__form" novalidate>
+                        <button class="popup__close"><img src="./images/CloseIcon.svg" alt="icono cerrar" class="popup__close-icon"></button>
+                        <h3 class="popup__title">Edit Profile</h3>
+                            <fieldset class="popup__field">
+                                <input id="name" type="text" name="name" placeholder="Nombre" class="popup__input popup__name" minlength="2" maxlength="40">
+                                <span class="popup__input-error name-error"></span>
+                                <input id="about" type="text" name="about" placeholder="Sobre mi" class="popup__input popup__about-me" minlength="2" maxlength="200">
+                                <span class="popup__input-error about-error"></span>
+                                <button type="submit" class="popup__button">Guardar</button>
+                            </fieldset>    
+                    </form>
             </section>
 
             <section  class="newitem newitem_opened">
-                <form  class="newitem__container">
-                    <button class="newitem__close"><img src="./images/CloseIcon.svg" alt="icono cerrar" class="newitem__close-icon"></button>
+                <form name="form" id="form" class="popup__form" novalidate>
+                    <button class="newitem__close newitem__close-icon"><img src="./images/CloseIcon.svg" alt="icono cerrar"></button>
                     <h3 class="newitem__title">Nuevo Lugar</h3>
                     <fieldset class="newitem__form">
-                        <input type="text" name="name"  placeholder="Titulo" class="newitem__name">
-                        <input type="text" name="about" placeholder="Enlace de la Imagen" class="newitem__url">
-                        <button  type="submit" class="newitem__button">Crear</button>
+                        <input id="title" type="text" name="name"  placeholder="Titulo" class="popup__input newitem__name" minlength="2">
+                        <span class="popup__input-error title-error"></span>
+                        <input id="url" class="popup__input newitem__url" placeholder="Enlace de la Imagen" type="url">
+                        <span class="popup__input-error url-error"></span>
+                        <button  type="submit" class="popup__button">Crear</button>
                     </fieldset>    
                 </form>
             </section>

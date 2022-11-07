@@ -15,6 +15,34 @@ const cardtitle = document.querySelector(".elements__title");
 const clickImgTitle = document.querySelector(".clickimg__title");
 const imagePopup = document.querySelector(".clickimg");
 const buttonClosePopup = document.querySelector(".clickimg__close");
+
+const formConfig = {
+  sectionProfile :".popup_opened",
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: ".popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__input-error-active",
+  buttonSubmit: ".popup__button"
+};
+
+
+//Funcion que cierra ventana perfil haciendo click fuera de la ventana
+function ClosePopupExternal (event){
+    if(event.target == openform){  
+      openform.setAttribute("style", "visibility: none; opacity: 0");
+      }
+   }
+  openform.addEventListener("click", ClosePopupExternal)
+
+//Funcion que cierra ventana haciendo click en X
+function ClosePopup(){
+  openform.setAttribute("style", "visibility: none; opacity: 0");
+  }
+  closeform.addEventListener("click", ClosePopup);
+  
+
 //Funcion que abre popup para editar perfil
 function openPopup (){
    openform.style.visibility= "visible";
@@ -22,13 +50,6 @@ function openPopup (){
    openform.style.display= "flex"
 }
 editprofile.addEventListener("click", openPopup);
-
-//Funcion que cierra ventana popup
-function ClosePopup (event){
-   event.preventDefault();
-   openform.setAttribute("style", "visibility: none; opacity: 0");
-}
-closeform.addEventListener("click", ClosePopup);
 
 //Captura valores ya ingresados en perfil
 setPopupName.setAttribute("value" , captureName.textContent);
@@ -40,17 +61,25 @@ function openNewPlace (){
 }
 newPlace.addEventListener("click", openNewPlace);
 
+
 // Funcion que cierra popup para formulario de nueva card
-function closenewplace (event){
-    event.preventDefault();
+function closeNewplace (event){
     openformNewitem.setAttribute("style", "visibility: none; opacity: 0");
 }
-closePlace.addEventListener("click", closenewplace);
+  closePlace.addEventListener("click", closeNewplace);
 
-  //Funcion que cierra ventana img popup
+  //Funcion que cierra ventana Place haciendo click fuera de la ventana
+function ClosePopupExternal (event){
+  if(event.target == openformNewitem){  
+    openformNewitem.setAttribute("style", "visibility: none; opacity: 0");
+    }
+ }
+openformNewitem.addEventListener("click", ClosePopupExternal)
+
+ 
+//Funcion que cierra ventana img popup
 
   function ClosePopupImgButton (event){
-    event.preventDefault();
     imagePopup.setAttribute("style", "display: none");
 }
 buttonClosePopup.addEventListener("click", ClosePopupImgButton);
@@ -58,7 +87,7 @@ buttonClosePopup.addEventListener("click", ClosePopupImgButton);
 //Funcion que captura datos de formulario perfil y los almacena luego de presionar boton guardar
 function handleProfileFormSubmit(evt) { 
     evt.preventDefault();
-    const setPopupName = document.querySelector(".popup__name").value;
+    const setPopupName = document.querySelector(".popup__input").value;
     const setPopupAbout = document.querySelector(".popup__about-me").value;
     captureName.textContent = setPopupName;
     captureAbout.textContent = setPopupAbout;
@@ -176,3 +205,68 @@ const initialCards = [
 
 
  
+const isValid = (config, formElement, inputElement) => {
+    if (!inputElement.validity.valid) {
+      showInputError(config, formElement, inputElement, inputElement.validationMessage);
+    } else {
+      hideInputError(config, formElement, inputElement);
+    }
+  };
+
+const showInputError = (config, formElement, inputElement ,errorMesagge) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.add(config.inputErrorClass);
+    errorElement.textContent = errorMesagge;
+    errorElement.classList.add(config.errorClass);
+    };
+
+  const hideInputError = (config, formElement, inputElement) => {
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.remove(config.inputErrorClass);
+    errorElement.classList.remove(config.errorClass);
+    errorElement.textContent = "";
+  };
+
+
+  const setEventListeners = (config, formElement) => {
+    const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+    const buttonElement = formElement.querySelector(config.buttonSubmit);
+    inputList.forEach((inputElement) => { 
+        inputElement.addEventListener("input", () => {
+          isValid(config, formElement, inputElement);  
+          toggleButtonState(inputList, buttonElement);   
+      });
+    });
+  };
+
+
+const enableValidation = (config) => {
+    const formList = Array.from(document.querySelectorAll(config.formSelector));
+    formList.forEach((formElement) => {
+      formElement.addEventListener("submit", (evt) => {
+        evt.preventDefault();
+        });
+      setEventListeners(config, formElement);
+    });
+  };
+enableValidation(formConfig);
+
+const hasInvalidInput = (inputList) => {
+    return inputList.some((inputElement) => {
+      return !inputElement.validity.valid;
+    })
+  };
+
+
+const toggleButtonState = (config, inputList, buttonElement) => {
+  if (hasInvalidInput(inputList)) {
+      buttonElement.classList.add(config.inactiveButtonClass);
+    } else {
+      buttonElement.classList.remove(config.inactiveButtonClass);
+    }
+  };
+
+
+window.addEventListener("click", function(e){
+  console.log(e.target)
+ })

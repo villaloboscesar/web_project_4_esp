@@ -8,4 +8,5 @@
     color: white;
     margin-bottom: 36px;
     cursor: pointer;
+    z-index: 2000;
 }
