@@ -6,11 +6,11 @@ const captureName = document.querySelector(".profile__name");
 const captureAbout = document.querySelector(".profile__about");
 const setPopupName = document.querySelector(".popup__name");
 const setPopupAbout = document.querySelector(".popup__about-me");
-const openformNewitem = document.querySelector(".newitem_opened");
+const openformNewitem = document.querySelector(".popup_place");
 const newPlace = document.querySelector(".profile__addbutton");
-const closePlace = document.querySelector(".newitem__close");
+const closePlace = document.querySelector(".popup__close");
 const form = document.querySelector(".popup");
-const formAddNewCard = document.querySelector(".newitem");
+const formAddNewCard = document.querySelector(".popup_place");
 const cardtitle = document.querySelector(".elements__title");
 const clickImgTitle = document.querySelector(".clickimg__title");
 const imagePopup = document.querySelector(".clickimg");
@@ -35,7 +35,7 @@ const formConfig = {
 
 
 //Funcion que cierra ventana haciendo click en X
-function ClosePopup() {
+function ClosePopup(evt) {
   openform.setAttribute("style", "visibility: none; opacity: 0");
 }
 closeform.addEventListener("click", ClosePopup);
@@ -62,9 +62,9 @@ setPopupAbout.setAttribute("value", captureAbout.textContent);
 
 
 // Funcion que abre popup para formulario de nueva card
-function openNewPlace() {
-  openformNewitem.setAttribute("style", "visibility: visible;opacity: 1;");
-}
+ function openNewPlace() {
+   openformNewitem.setAttribute("style", "visibility: visible;opacity: 1;");
+ }
 newPlace.addEventListener("click", openNewPlace);
 
 
@@ -212,10 +212,10 @@ function handleNewcardFormSubmit(evt) {
   //Selecciono en el DOM cual elemento HTML destino a colocar el clone
   const addelements = document.querySelector(".elements");
   //Capturo el valor del titulo ingresado por el usuario en el formulario y lo guardo en el titulo de la nueva tarjeta
-  const newTitleCard = document.querySelector(".newitem__name").value;
+  const newTitleCard = document.querySelector(".popup__name-place").value;
   cloneNewCard.querySelector(".elements__title").textContent = newTitleCard;
   //Capturo el valor del URL ingresado por el usuario en el formulario y lo guardo en la nueva tarjeta
-  const newURLImage = document.querySelector(".newitem__url").value;
+  const newURLImage = document.querySelector(".popup__url-place").value;
   //Agrego el valor capturado y lo coloco como SRC a la nueva imagen de la card
   cloneNewCard.querySelector(".elements__pic").src = newURLImage;
   // Funcion Boton Like
@@ -250,6 +250,7 @@ function handleNewcardFormSubmit(evt) {
   addelements.prepend(cloneNewCard);
   //Cierro la ventana
   openformNewitem.setAttribute("style", "visibility: none; opacity: 0");
+  
 }
 formAddNewCard.addEventListener('submit', handleNewcardFormSubmit);
 

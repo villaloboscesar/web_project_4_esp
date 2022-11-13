@@ -20,7 +20,7 @@
             
             <section  class="popup popup_opened" data-id="popupexternal">
                     <form name="form" class="popup__form" novalidate>
-                        <button class="popup__close"><img src="./images/CloseIcon.svg" alt="icono cerrar" class="popup__close-icon"></button>
+                        <button class="popup__close popup__close-icon"><img src="./images/CloseIcon.svg" alt="icono cerrar" class="popup__close-icon"></button>
                         <h3 class="popup__title">Edit Profile</h3>
                             <fieldset class="popup__field">
                                 <input id="name" type="text" name="name" placeholder="Nombre" class="popup__input popup__name" minlength="2" maxlength="40" required>
@@ -32,19 +32,20 @@
                     </form>
             </section>
 
-            <section  class="newitem newitem_opened" data-id="popupexternal">
+            <section  class="popup popup_place" data-id="popupexternal">
                 <form name="form" id="form" class="popup__form" novalidate>
-                    <button class="newitem__close newitem__close-icon"><img src="./images/CloseIcon.svg" alt="icono cerrar"></button>
-                    <h3 class="newitem__title">Nuevo Lugar</h3>
-                    <fieldset class="newitem__form">
-                        <input id="title" type="text" name="name"  placeholder="Titulo" class="popup__input newitem__name" minlength="2" required>
+                    <button class="popup__close popup__close-icon"><img src="./images/CloseIcon.svg" alt="icono cerrar"></button>
+                    <h3 class="popup__title">Nuevo Lugar</h3>
+                    <fieldset class="popup__field">
+                        <input id="title" type="text" name="place_name"  placeholder="Titulo" class="popup__input popup__name popup__name-place" minlength="2" required>
                         <span class="popup__input-error title-error"></span>
-                        <input id="url" class="popup__input newitem__url" placeholder="Enlace de la Imagen" type="url" required>
+                        <input name="place_url" id="url" class="popup__input popup__url popup__url-place" placeholder="Enlace de la Imagen" type="url" required>
                         <span class="popup__input-error url-error"></span>
                         <button  type="submit" class="popup__button">Crear</button>
                     </fieldset>    
                 </form>
             </section>
+            
 
             <section  class="clickimg " data-id="popupimg">
                 <div  class="clickimg__container">
