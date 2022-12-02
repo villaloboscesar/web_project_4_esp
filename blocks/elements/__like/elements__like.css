@@ -1,4 +1,7 @@
-.elements__like{
-    cursor: pointer;
-    z-index: 2;
+.elements__like {
+  cursor: pointer;
+  z-index: 2;
+}
+.elements__like:hover {
+  opacity: 0.6;
 }
