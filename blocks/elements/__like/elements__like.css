@@ -1,6 +1,5 @@
 .elements__like {
   background-size: 100%;
-  cursor: pointer;
   transition: 0.3s;
   cursor: pointer;
   z-index: 2;
