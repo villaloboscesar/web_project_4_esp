@@ -27,7 +27,7 @@ const formConfig = {
   buttonSubmit: ".popup__button",
 };
 
-function CreateCard(item) {
+function createCard(item) {
   //Seleccion del template con todo su contenido interno
   const templateContent = document.querySelector("#template__cards").content;
   //Clonado de template
@@ -41,11 +41,27 @@ function CreateCard(item) {
   const addTitle = cloneTemplate.querySelector(".elements__title");
   addTitle.textContent = item.name;
 
-  //Funcion Boton Like
+  // Funcion Boton Like
   cloneTemplate
     .querySelector(".elements__like")
-    .addEventListener("click", function (event) {
-      event.target.classList.toggle("elements__like_active");
+    .addEventListener("click", function () {
+      if (
+        !cloneTemplate
+          .querySelector(".elements__like")
+          .classList.contains("elements__like_active")
+      ) {
+        cloneTemplate
+          .querySelector(".elements__like")
+          .classList.add("elements__like_active");
+        cloneTemplate.querySelector(".elements__like").src =
+          "./images/corazon_negro.svg";
+      } else {
+        cloneTemplate
+          .querySelector(".elements__like")
+          .classList.remove("elements__like_active");
+        cloneTemplate.querySelector(".elements__like").src =
+          "./images/corazon.svg";
+      }
     });
 
   //Funcion que borra cualquier card inicial
@@ -65,25 +81,25 @@ function CreateCard(item) {
       clickImgTitle.textContent = event.target
         .closest("div")
         .querySelector(".elements__title").textContent;
-      document.addEventListener("keydown", ActivarEventoTeclado);
+      document.addEventListener("keydown", activarEventoTeclado);
     });
   return cloneTemplate;
 }
 
 //Funcion que cierra ventana haciendo click en X
-function ClosePopup() {
+function closePopup() {
   openForm.setAttribute("style", "visibility: none; opacity: 0");
 }
-closeForm.addEventListener("click", ClosePopup);
+closeForm.addEventListener("click", closePopup);
 
-function ActivarEventoTeclado(event) {
+function activarEventoTeclado(event) {
   if (event.key === "Escape") {
     //cerrar el modal
-    ClosePopup();
+    closePopup();
     closeNewplace();
-    ClosePopupImgButton();
+    closePopupImgButton();
     //quitar el evento
-    document.removeEventListener("keydown", ActivarEventoTeclado);
+    document.removeEventListener("keydown", activarEventoTeclado);
   }
 }
 
@@ -92,7 +108,7 @@ function openPopup() {
   openForm.style.visibility = "visible";
   openForm.style.opacity = "1";
   openForm.style.display = "flex";
-  document.addEventListener("keydown", ActivarEventoTeclado);
+  document.addEventListener("keydown", activarEventoTeclado);
 }
 editProfile.addEventListener("click", openPopup);
 
@@ -103,7 +119,7 @@ setPopupAbout.setAttribute("value", captureAbout.textContent);
 // Funcion que abre popup para formulario de nueva card
 function openNewPlace() {
   openFormNewItem.setAttribute("style", "visibility: visible;opacity: 1;");
-  document.addEventListener("keydown", ActivarEventoTeclado);
+  document.addEventListener("keydown", activarEventoTeclado);
 }
 newPlace.addEventListener("click", openNewPlace);
 
@@ -114,27 +130,27 @@ function closeNewplace() {
 closePlace.addEventListener("click", closeNewplace);
 
 //Funcion que cierra ventana Place haciendo click fuera de la ventana
-function ClosePopupExternal(event) {
+function closePopupExternal(event) {
   const formAlQueLeDisteClick = event.target;
-  const data_Target = formAlQueLeDisteClick.dataset.id;
-  if (data_Target == "popupexternal") {
+  const dataTarget = formAlQueLeDisteClick.dataset.id;
+  if (dataTarget == "popupexternal") {
     formAlQueLeDisteClick.setAttribute("style", "visibility: none; opacity: 0");
   } else {
-    if (data_Target == "popupimg")
+    if (dataTarget == "popupimg")
       formAlQueLeDisteClick.classList.remove("clickimg_opened");
   }
 }
 const modales = [openFormNewItem, openForm, imagePopup];
 modales.forEach(function (modal) {
-  modal.addEventListener("click", ClosePopupExternal);
+  modal.addEventListener("click", closePopupExternal);
 });
 
 //Funcion que cierra ventana img popup
 
-function ClosePopupImgButton() {
+function closePopupImgButton() {
   imagePopup.classList.remove("clickimg_opened");
 }
-buttonClosePopup.addEventListener("click", ClosePopupImgButton);
+buttonClosePopup.addEventListener("click", closePopupImgButton);
 
 //Funcion que captura datos de formulario perfil y los almacena luego de presionar boton guardar
 function handleProfileFormSubmit(evt) {
@@ -179,7 +195,7 @@ const initialCards = [
 initialCards.forEach((item) => {
   //Seleccion de elemento donde se copiara el templeta clonado
   const addElements = document.querySelector(".elements");
-  const cloneTemplate = CreateCard(item);
+  const cloneTemplate = createCard(item);
   addElements.append(cloneTemplate);
 });
 
@@ -194,74 +210,10 @@ function handleNewcardFormSubmit(evt) {
   //Capturo el valor del URL ingresado por el usuario en el formulario y lo guardo en la nueva tarjeta
   const newURLImage = document.querySelector(".popup__url-place").value;
   //Agrego el valor capturado y lo coloco como SRC a la nueva imagen de la card
-  const cloneNewCard = CreateCard({ link: newURLImage, name: newTitleCard });
+  const cloneNewCard = createCard({ link: newURLImage, name: newTitleCard });
   //Agrego la nueva tarjeta al DOM
   addElements.prepend(cloneNewCard);
   //Cierro la ventana
   openFormNewItem.setAttribute("style", "visibility: none; opacity: 0");
 }
 formAddNewCard.addEventListener("submit", handleNewcardFormSubmit);
-
-const isValid = (config, formElement, inputElement) => {
-  if (!inputElement.validity.valid) {
-    showInputError(
-      config,
-      formElement,
-      inputElement,
-      inputElement.validationMessage
-    );
-  } else {
-    hideInputError(config, formElement, inputElement);
-  }
-};
-
-//isValid(?)
-
-const showInputError = (config, formElement, inputElement, errorMesagge) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add(config.inputErrorClass);
-  errorElement.textContent = errorMesagge;
-  errorElement.classList.add(config.errorClass);
-};
-
-//showInputError(?)
-
-const hideInputError = (config, formElement, inputElement) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove(config.inputErrorClass);
-  errorElement.classList.remove(config.errorClass);
-  errorElement.textContent = "";
-};
-
-const hasInvalidInput = (inputList) => {
-  //variable bandera
-  let hasInvalid = true;
-  inputList.forEach((inputElement) => {
-    if (!inputElement.validity.valid) {
-      hasInvalid = false;
-    }
-  });
-  return hasInvalid;
-};
-
-const toggleButtonState = (config, inputList, buttonElement) => {
-  if (!hasInvalidInput(inputList)) {
-    buttonElement.classList.add(config.inactiveButtonClass);
-  } else {
-    buttonElement.classList.remove(config.inactiveButtonClass);
-  }
-};
-
-const setEventListeners = (config, formElement) => {
-  const inputList = Array.from(
-    formElement.querySelectorAll(config.inputSelector)
-  );
-  const buttonElement = formElement.querySelector(config.buttonSubmit);
-  toggleButtonState(config, inputList, buttonElement);
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener("input", () => {
-      isValid(config, formElement, inputElement);
-      toggleButtonState(config, inputList, buttonElement);
-    });
-  });
-};
