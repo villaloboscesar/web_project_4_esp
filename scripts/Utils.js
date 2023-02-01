@@ -26,14 +26,14 @@ closeForm.addEventListener("click", closePopup);
 
 //Funcion que cierra ventana haciendo click en X
 
-function activarEventoTeclado(event) {
+function keyboardEventActive(event) {
   if (event.key === "Escape") {
     //cerrar el modal
     closePopup();
     closeNewplace();
     closePopupImgButton();
     //quitar el evento
-    document.removeEventListener("keydown", activarEventoTeclado);
+    document.removeEventListener("keydown", keyboardEventActive);
   }
 }
 
@@ -42,7 +42,7 @@ function openPopup() {
   openForm.style.visibility = "visible";
   openForm.style.opacity = "1";
   openForm.style.display = "flex";
-  document.addEventListener("keydown", activarEventoTeclado);
+  document.addEventListener("keydown", keyboardEventActive);
 }
 editProfile.addEventListener("click", openPopup);
 
@@ -53,7 +53,7 @@ setPopupAbout.setAttribute("value", captureAbout.textContent);
 // Funcion que abre popup para formulario de nueva card
 function openNewPlace() {
   openFormNewItem.setAttribute("style", "visibility: visible;opacity: 1;");
-  document.addEventListener("keydown", activarEventoTeclado);
+  document.addEventListener("keydown", keyboardEventActive);
 }
 newPlace.addEventListener("click", openNewPlace);
 
